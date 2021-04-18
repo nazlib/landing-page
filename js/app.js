@@ -28,12 +28,9 @@ const navbarList = document.getElementById('navbar__list');
 */
 function createNavItemAnchorElement(id, name) {
     let anchor = document.createElement('a');
-    let href = `#${id}`;
     anchor.classList.add("menu__link");
-    anchor.setAttribute('href', href);
     anchor.innerHTML = name;
-    //if we are using anchor click event
-    //anchor.setAttribute('section-id', id)
+    anchor.setAttribute('section-id', id)
     return anchor;
 }
 
@@ -73,11 +70,10 @@ function setActive() {
     console.log(`Call to doSomething took ${t1 - t0} milliseconds.`);
 }
 // Scroll to anchor ID using scrollTO event
-//if we are using anchor click event
-// function scrollEvent(sectionId) {
-//     let section = document.getElementById(sectionId);
-//     section.scrollIntoView({ behaviour: 'smooth' })
-// }
+function scrollEvent(sectionId) {
+     let section = document.getElementById(sectionId);
+     section.scrollIntoView({ behaviour: 'smooth' })
+}
 /**
  * End Main Functions
  * Begin Events
@@ -98,12 +94,11 @@ function isElementInViewport(el) {
 // Build menu
 buildNav();
 
-// Scroll to section on link click
-// navbarList.addEventListener('click', function (event) {
-//     if (event.target.nodeName == "A") {
-//         scrollEvent(event.target.getAttribute('section-id'));
-//     }
-// });
+navbarList.addEventListener('click', function (event) {    
+    if (event.target.nodeName == "A") {
+        scrollEvent(event.target.getAttribute('section-id'));
+    }
+});
 
 
 // Set sections as active
