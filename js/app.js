@@ -50,7 +50,7 @@ function buildNav() {
         navItem.append(createNavItemAnchorElement(sectionId, sectionName));
         navbarList.appendChild(navItem);
     }
-    
+
 }
 
 
@@ -71,8 +71,8 @@ function setActive() {
 }
 // Scroll to anchor ID using scrollTO event
 function scrollEvent(sectionId) {
-     let section = document.getElementById(sectionId);
-     section.scrollIntoView({ behaviour: 'smooth' })
+    let section = document.getElementById(sectionId);
+    section.scrollIntoView({ behaviour: 'smooth', block: "end", inline: "nearest" });
 }
 /**
  * End Main Functions
@@ -94,7 +94,7 @@ function isElementInViewport(el) {
 // Build menu
 buildNav();
 
-navbarList.addEventListener('click', function (event) {    
+navbarList.addEventListener('click', function (event) {
     if (event.target.nodeName == "A") {
         scrollEvent(event.target.getAttribute('section-id'));
     }
